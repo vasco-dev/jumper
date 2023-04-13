@@ -45,13 +45,18 @@ public class PlayerController : MonoBehaviour
 
 
     // constant force component, funcitons as the Player gravity
+    [SerializeField]
     private ConstantForce _gravityForce = null;
 
     // animator component
+    [SerializeField]
     private Animator _animator = null;
 
+    [SerializeField]
+    private LineRenderer _lineRenderer = null;
+
     // rigid body
-    public Rigidbody Body { get; private set; }
+    public Rigidbody Body { get; private set; } = null;
 
     // singleton instance
     public static PlayerController Instance { get; private set; }
@@ -71,22 +76,40 @@ public class PlayerController : MonoBehaviour
             Instance = this;
         }
 
-        // get player's ConstantForce component, is used as Gravity
-        TryGetComponent<ConstantForce>(out _gravityForce);
-        if(_gravityForce == null){
-            Debug.LogError("No ConstantForce component");
+        // get player's ConstantForce component, is used as Gravity (cant be trygetcomponent)
+        if (_gravityForce == null)
+        {
+            TryGetComponent<ConstantForce>(out _gravityForce);
+
+            if (_gravityForce == null)
+            {
+                Debug.LogError("No ConstantForce component");
+            }
         }
 
         // get animator component
-        TryGetComponent<Animator>(out _animator);
-        if(_animator == null){
-            Debug.LogError("No Animator component");
+        if (_animator == null)
+        {
+            TryGetComponent<Animator>(out _animator);
+
+            if (_animator == null)
+            {
+                Debug.LogError("No Animator component");
+            }
+        }
+
+        if(_lineRenderer== null){
+            Debug.LogError("No linerenderer");
         }
 
         // get player's rigidbody (cant be trygetcomponent)
-        Body = GetComponent<Rigidbody>();
-        if (Body == null){
-            Debug.LogError("No RigidBody component");
+        if (Body == null)
+        {
+            Body = GetComponent<Rigidbody>();
+            if (Body == null)
+            {
+                Debug.LogError("No RigidBody component");
+            }
         }
 
         // get the screen width in pixels
@@ -110,6 +133,7 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         _animator.SetBool("IsJumpStarting", _isHolding);
+        _lineRenderer.transform.position = transform.position;
     }
 
     /// <summary>
