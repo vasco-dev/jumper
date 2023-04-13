@@ -135,11 +135,11 @@ GameObject:
   - component: {fileID: 472515425}
   - component: {fileID: 472515424}
   - component: {fileID: 472515429}
+  - component: {fileID: 472515431}
   - component: {fileID: 472515423}
   - component: {fileID: 472515428}
   - component: {fileID: 472515430}
   - component: {fileID: 472515427}
-  - component: {fileID: 472515431}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -799,7 +799,6 @@ GameObject:
   - component: {fileID: 1889981797}
   - component: {fileID: 1889981796}
   - component: {fileID: 1889981795}
-  - component: {fileID: 1889981794}
   - component: {fileID: 1889981798}
   m_Layer: 0
   m_Name: Middle
@@ -808,19 +807,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1889981794
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889981793}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1889981795
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -880,7 +866,7 @@ Transform:
   m_GameObject: {fileID: 1889981793}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.19}
-  m_LocalScale: {x: 0.01, y: 10, z: 1}
+  m_LocalScale: {x: 0.01, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 963194228}

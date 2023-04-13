@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     // is the player holding the right side
     private bool _holdingRight = false;
 
+    private bool _isGrounded = false;
+
     // screen size of the screen, IN PIXELS
     private float _screenSize = 1080f;
 
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
 
     //remove
-    private float TEMP_START_TIME = 0;
+    //private float TEMP_START_TIME = 0;
 
 
     private void Awake()
@@ -115,44 +117,77 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void InputOnTap(InputAction.CallbackContext obj)
     {
-        // if playing in editor play mode, check if gravity value has been manually changed
-        // and update the gravity component to match
-        #if UNITY_EDITOR
-            _gravityForce.force = new(0f, _gravityScale, 0f);
-        #endif
+        Collider[] overlapColliders;
+        _isGrounded = false;
 
-        // detect which side of the screen the touch was
-        float inputX = _positionAction.ReadValue<float>();
-        inputX /= _screenSize;
+        overlapColliders = Physics.OverlapBox(transform.position, 0.5f*Vector3.one,Quaternion.identity ,Physics.AllLayers);
 
-        if (inputX >= 0.5f)
+        foreach (Collider col in overlapColliders)
         {
-            // Right
-            _holdingRight = true;
-        }
-        else
-        {            
-            // Left
-            _holdingRight = false;
+            if (col.gameObject != gameObject)
+            {
+                //ser is grounded
+                _isGrounded = true;
+            }
         }
 
-        // start holding and coroutine
-        _isHolding = true;
 
-        StartCoroutine(IHoldPress());
+
+
+        if (_isGrounded)
+        {
+
+
+            // if playing in editor play mode, check if gravity value has been manually changed
+            // and update the gravity component to match
+#if UNITY_EDITOR
+            _gravityForce.force = new(0f, _gravityScale, 0f);
+#endif
+
+            // detect which side of the screen the touch was
+            float inputX = _positionAction.ReadValue<float>();
+            inputX /= _screenSize;
+
+            if (inputX >= 0.5f)
+            {
+                // Right
+                _holdingRight = true;
+            }
+            else
+            {
+                // Left
+                _holdingRight = false;
+            }
+
+            // start holding and coroutine
+            _isHolding = true;
+
+            StartCoroutine(IHoldPress());
+        }
     }
+    
 
     /// <summary>
     ///  called by released input event
     /// </summary>
     private void InputOnRelease(InputAction.CallbackContext obj)
     {
-        // stop holding
-        _isHolding = false;
+        //check if the player is grounded
+        if (_isGrounded == true)
+        {
+            // stop holding
+            _isHolding = false;
 
-        // jump for the direction the player is holding
-        JumpToDir(_holdingRight);
+            // jump for the direction the player is holding
+            JumpToDir(_holdingRight);
 
+            // player is not grounded anymore
+            _isGrounded = false;
+        }
+        //else
+        //{
+        //    Debug.Log("NOT GROUNDED");
+        //}   
     }
 
     /// <summary>
@@ -199,19 +234,19 @@ public class PlayerController : MonoBehaviour
             // if not at the max, increment the force
             if (_currentJumpForce < _maxJumpForce){
                 _currentJumpForce += _jumpForceIncrement;
-                TEMP_START_TIME += Time.deltaTime;
+                //TEMP_START_TIME += Time.deltaTime;
             }
             else
             {
                 _currentJumpForce = _maxJumpForce;
 
-                #if UNITY_EDITOR
-                    if (TEMP_START_TIME > 0)
-                    {
-                        Debug.Log("Max force : " + _currentJumpForce + " : " + TEMP_START_TIME);
-                        TEMP_START_TIME = 0;
-                    }
-                #endif
+                //#if UNITY_EDITOR
+                //    if (TEMP_START_TIME > 0)
+                //    {
+                //        //Debug.Log("Max force : " + _currentJumpForce + " : " + TEMP_START_TIME);
+                //        TEMP_START_TIME = 0;
+                //    }
+                //#endif
             }
             yield return new WaitForFixedUpdate();
         }
