@@ -8,10 +8,18 @@ public class GameManagerAlt : MonoBehaviour
 {
     //put in GameManager -> public static GameManager Instance { get; private set; }
 
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI TimerText;
     private float maxTime = 60;
     private float currentTime;
     private StringBuilder timer = new StringBuilder();
+
+    [SerializeField] private TextMeshProUGUI ScoreText;
+    //variable for internally storing player score
+    private int playerScore;
+    //the score that shall be presented in the UI
+    private StringBuilder score = new StringBuilder();
+
+    [SerializeField] private TextMeshProUGUI HiScoreGameOver;
 
     private bool gameIsRunning;
 
@@ -41,6 +49,10 @@ public class GameManagerAlt : MonoBehaviour
         if (gameIsRunning)
         {
             Timer();
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                AddScore(10);
+            }
         }
     }
 
@@ -51,7 +63,7 @@ public class GameManagerAlt : MonoBehaviour
             currentTime += Time.deltaTime;
             timer.Clear();
             timer.Append((int)maxTime - (int)currentTime);
-            timerText.text = timer.ToString();
+            TimerText.text = timer.ToString();
         }
         else
         {
@@ -63,18 +75,33 @@ public class GameManagerAlt : MonoBehaviour
     public void StartGame()
     {
         currentTime = 0;
+        ResetScore();
         gameIsRunning = true;
     }
 
     public void EndGame()
     {
-        /*
-         * gameIsRunning = false;
-        if (score > PlayerPrefs.GetInt("HighScore"))
+        gameIsRunning = false;
+        if (playerScore > PlayerPrefs.GetInt("HighScore"))
         {
-            PlayerPrefs.SetInt("HighScore", score);
+            PlayerPrefs.SetInt("HighScore", playerScore);
         }
-        HighScoreGameOver.text = PlayerPrefs.GetInt("HighScore").ToString();
-        */
+        HiScoreGameOver.text = PlayerPrefs.GetInt("HighScore").ToString();
+    }
+
+    public void AddScore(int increment)
+    {
+        playerScore += increment;
+        score.Remove(7, score.Length - 7);
+        score.Append(playerScore);
+        ScoreText.text = score.ToString();
+    }
+
+    private void ResetScore()
+    {
+        playerScore = 0;
+        score.Clear();
+        score.Append("Score").AppendLine().Append(playerScore);
+        ScoreText.text = score.ToString();
     }
 }
