@@ -4,9 +4,16 @@ using UnityEngine;
 using TMPro;
 using System.Text;
 
-public class GameManagerAlt : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    //put in GameManager -> public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
+
+    [SerializeField] private GameObject MainMenu;
+
+    [SerializeField] private GameObject TutorialUI;
+
+    [SerializeField] private GameObject GameUI;
+    [SerializeField] private GameObject GameOverUI;
 
     [SerializeField] private TextMeshProUGUI TimerText;
     private float maxTime = 60;
@@ -19,13 +26,15 @@ public class GameManagerAlt : MonoBehaviour
     //the score that shall be presented in the UI
     private StringBuilder score = new StringBuilder();
 
+    [SerializeField] private TextMeshProUGUI HiScoreText;
+
+    [SerializeField] private TextMeshProUGUI ScoreGameOver;
     [SerializeField] private TextMeshProUGUI HiScoreGameOver;
 
     private bool gameIsRunning;
 
     void Awake()
     {
-        /*
         if (Instance == null)
         {
             Instance = this;
@@ -34,13 +43,12 @@ public class GameManagerAlt : MonoBehaviour
         {
             Debug.Log("Multiple Game Managers!!!");
         }
-        */
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartGame();
+        //StartGame();
     }
 
     // Update is called once per frame
@@ -68,20 +76,37 @@ public class GameManagerAlt : MonoBehaviour
         else
         {
             Debug.Log("GameOver");
-            //end game;
+            EndGame();
         }
     }
 
     public void StartGame()
     {
+        MainMenu.SetActive(false);
         currentTime = 0;
         ResetScore();
+        UpdateHiScore();
         gameIsRunning = true;
+    }
+
+    public void ShowTutorial()
+    {
+        TutorialUI.SetActive(true);
+        GameUI.SetActive(false);
+    }
+
+    public void HideTutorial()
+    {
+        TutorialUI.SetActive(false);
+        GameUI.SetActive(true);
     }
 
     public void EndGame()
     {
         gameIsRunning = false;
+        GameUI.SetActive(false);
+        GameOverUI.SetActive(true);
+        ScoreGameOver.text = playerScore.ToString();
         if (playerScore > PlayerPrefs.GetInt("HighScore"))
         {
             PlayerPrefs.SetInt("HighScore", playerScore);
@@ -103,5 +128,10 @@ public class GameManagerAlt : MonoBehaviour
         score.Clear();
         score.Append("Score").AppendLine().Append(playerScore);
         ScoreText.text = score.ToString();
+    }
+
+    private void UpdateHiScore()
+    {
+        HiScoreText.text = "HiScore\n" + PlayerPrefs.GetInt("HighScore").ToString();
     }
 }
