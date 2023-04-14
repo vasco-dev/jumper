@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LineRenderer _lineRenderer = null;
 
+    //default scale of the line
+    [SerializeField]
+    private float _lineRendererScale = 0.8f;
+
     // rigid body
     public Rigidbody Body { get; private set; } = null;
 
@@ -130,10 +134,28 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+
     private void LateUpdate()
     {
         _animator.SetBool("IsJumpStarting", _isHolding);
         _lineRenderer.transform.position = transform.position;
+
+        if (_isHolding)
+        {
+            Vector3 tempScale = _lineRendererScale * (_currentJumpForce / _maxJumpForce) * Vector3.one;
+
+            if(!_holdingRight)
+            {
+                tempScale.x *= -1;
+            }
+
+            _lineRenderer.transform.localScale = tempScale;
+        }
+        else
+        {
+            _lineRenderer.transform.localScale = Vector3.zero;
+        }
     }
 
     /// <summary>
