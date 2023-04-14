@@ -39,8 +39,8 @@ public class BackGroundGradient : MonoBehaviour
 
     private void HandlePlayerPosition()
     {
-        playerpos += 0.1f;
-        if (playerpos > 150) playerpos = 50;
+        playerpos += 0.05f;
+        if (playerpos > 590) playerpos = 0;
         Debug.Log("Current Player Position: " + playerpos);
         colorIndex = Mathf.FloorToInt(playerpos / 100);
         Debug.Log("Current Color Index: " + colorIndex);

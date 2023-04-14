@@ -1619,7 +1619,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1138975287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1169380385}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1138975287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1697,6 +1709,7 @@ MonoBehaviour:
   HiScoreText: {fileID: 1546057622}
   ScoreGameOver: {fileID: 504311906}
   HiScoreGameOver: {fileID: 1007837782}
+  FinalScoreAnimator: {fileID: 1200808668}
 --- !u!4 &1169380384
 Transform:
   m_ObjectHideFlags: 0
@@ -1735,6 +1748,7 @@ GameObject:
   - component: {fileID: 1200808665}
   - component: {fileID: 1200808667}
   - component: {fileID: 1200808666}
+  - component: {fileID: 1200808668}
   m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -1806,6 +1820,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200808664}
   m_CullTransparentMesh: 1
+--- !u!95 &1200808668
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200808664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbe20f4295b72144581b94b63e18d92c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1246067918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,6 +2860,10 @@ MonoBehaviour:
   colors:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0.32871437, g: 0, b: 1, a: 0}
+  - {r: 0.60826313, g: 1, b: 0, a: 0}
+  - {r: 0, g: 0.8484955, b: 1, a: 0}
+  - {r: 1, g: 0, b: 0.8217411, a: 0}
+  - {r: 1, g: 0.5356669, b: 0, a: 0}
 --- !u!64 &2071666534
 MeshCollider:
   m_ObjectHideFlags: 0

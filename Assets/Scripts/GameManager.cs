@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
 
     private bool gameIsRunning;
 
+    [SerializeField] private Animator FinalScoreAnimator;
+    private int animationRate = 2;
+    private int tempScore;
+    private bool animateScore;
+
     void Awake()
     {
         if (Instance == null)
@@ -48,7 +53,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartGame();
+        
     }
 
     // Update is called once per frame
@@ -60,6 +65,26 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 AddScore(10);
+            }
+        }
+
+        if (animateScore)
+        {
+            if (tempScore < playerScore)
+            {
+                tempScore += animationRate;
+                ScoreGameOver.text = tempScore.ToString();
+            }
+            else
+            {
+                ScoreGameOver.text = playerScore.ToString();
+                if (ScoreGameOver.text == playerScore.ToString())
+                {
+                    animateScore = false;
+                    //FinalScoreAnimator.ResetTrigger("ExitAnim");
+                    FinalScoreAnimator.Play("FinalScore");
+                }
+                tempScore = 0;
             }
         }
     }
@@ -82,7 +107,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        FinalScoreAnimator.SetBool("ExitAnim", true);
+        animateScore = false;
         MainMenu.SetActive(false);
+        GameOverUI.SetActive(false);
+        GameUI.SetActive(true);
         currentTime = 0;
         ResetScore();
         UpdateHiScore();
@@ -91,19 +120,23 @@ public class GameManager : MonoBehaviour
 
     public void ShowTutorial()
     {
+        gameIsRunning = false;
         TutorialUI.SetActive(true);
         GameUI.SetActive(false);
     }
 
     public void HideTutorial()
     {
+        gameIsRunning = true;
         TutorialUI.SetActive(false);
         GameUI.SetActive(true);
     }
 
     public void EndGame()
     {
+        FinalScoreAnimator.SetBool("ExitAnim", false);
         gameIsRunning = false;
+        animateScore = true;
         GameUI.SetActive(false);
         GameOverUI.SetActive(true);
         ScoreGameOver.text = playerScore.ToString();
