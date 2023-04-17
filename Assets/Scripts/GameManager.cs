@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         currentTime = 0;
         ResetScore();
         UpdateHiScore();
+        FindObjectOfType<BackgroundLerping>().ResetBackground();
         gameIsRunning = true;
     }
 
