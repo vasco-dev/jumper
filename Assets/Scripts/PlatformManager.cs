@@ -12,6 +12,8 @@ public class PlatformManager : MonoBehaviour
 
     private int _platformTotal = 0;
 
+    private int _currentPlatform;
+
 
     public static PlatformManager Instance { get; private set; }
 
