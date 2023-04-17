@@ -3,16 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
-{    
+{
+    [Header("DEBUG")]
+    [SerializeField]
+    public bool SpawnPlatNow = false;
+
+    [Header("Spawn Coordinates")]
 
     [SerializeField]
-    private List<GameObject> _prefabs;
+    private float _maxCoordY = 5f;
+    [SerializeField]
+    private float _leftCoordX = -2f;
+    [SerializeField]
+    private float _rightCoordX = 2f;
+    [SerializeField]
+    private float _maxCoordOffset = 0.5f;
+
+
+    [Header("References")]
+
+
+
+    [SerializeField]
+    private List<GameObject> _platformPrefabs;
 
     private List<Platform> _platforms = new List<Platform>();
 
     private int _platformTotal = 0;
 
-    private int _currentPlatform;
+    private int _currentPlatform = 0;
 
 
     public static PlatformManager Instance { get; private set; }
@@ -28,16 +47,55 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (SpawnPlatNow){
+            SpawnPlatNow = false;
+            SpawnPlatform();
+        }
+    }
+
     private void SpawnPlatform()
     {
-        Platform localPlat = GetRandomPlatform();
+        // instantiate a random platform and store into spawnedPlat
+        Platform spawnedPlat = Instantiate(GetRandomPlatform());        
+
+        // set the platform's index
+        spawnedPlat.SetIndex(_platformTotal);
+
+        // set if the platform should be left or right
+        // if it is even number it is on the right
+        if(_platformTotal % 2 == 0){
+            spawnedPlat.SetIsRight(true);
+        }
+
+        // insert the spawned platform into its correct index
+        _platforms.Insert(spawnedPlat.Index, spawnedPlat);
+
+        
+
+        // platform Y position and add offset
+        float posY = _currentPlatform * _maxCoordY;
+        posY += UnityEngine.Random.Range(-_maxCoordOffset, _maxCoordOffset);
+
+        // set the X position based on which side the platform is on and add offset
+        float posX = spawnedPlat.IsRight? _rightCoordX: _leftCoordX;
+        posX += UnityEngine.Random.Range(-_maxCoordOffset, _maxCoordOffset);
+
+        //set the transform position of the spawned platform
+        spawnedPlat.transform.position = new(posX, posY, 0);
+
+        // iterate the total number of platforms and the index of the current
+        ++_platformTotal;
+        ++_currentPlatform;
+
     }
 
     private Platform GetRandomPlatform()
     {
-        int random = UnityEngine.Random.Range(0, 1 + _prefabs.Count);
+        int random = UnityEngine.Random.Range(0, _platformPrefabs.Count);
 
-        _prefabs[random].TryGetComponent<Platform>(out Platform plat);
+        _platformPrefabs[random].TryGetComponent<Platform>(out Platform plat);
 
         if(plat == null) {
             Debug.LogError("PREFAB IS NOT PLATFORM");
