@@ -138,22 +138,20 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
+        // set the animator properties
         _animator.SetBool("IsJumpStarting", _isHolding);
+
+
+        // set the line renderer position and scale according to jump force
         _lineRenderer.transform.position = transform.position;
-
-        if (_isHolding)
-        {
+        if (_isHolding){
             Vector3 tempScale = _lineRendererScale * (_currentJumpForce / _maxJumpForce) * Vector3.one;
-
-            if(!_holdingRight)
-            {
+            if(!_holdingRight){
                 tempScale.x *= -1;
             }
-
             _lineRenderer.transform.localScale = tempScale;
         }
-        else
-        {
+        else{
             _lineRenderer.transform.localScale = Vector3.zero;
         }
     }
