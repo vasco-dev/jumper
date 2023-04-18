@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlatformManager : MonoBehaviour
 {
     [Header("DEBUG")]
+
     [SerializeField]
     public bool SpawnPlatNow = false;
+
+    [SerializeField]
+    public bool DestroyAllPlatsNow = false;
 
     [Header("Spawn Coordinates")]
 
@@ -49,12 +53,25 @@ public class PlatformManager : MonoBehaviour
 
     private void Update()
     {
+
+        // debug
         if (SpawnPlatNow){
             SpawnPlatNow = false;
             SpawnPlatform();
         }
+
+        if (DestroyAllPlatsNow){
+            DestroyAllPlatsNow = false;
+            DestroyAllPlatforms();
+        }
+
+
     }
 
+    /// <summary>
+    /// spawns a random platform obtained from GetRandomPlatform then adds it to the list
+    /// and sets it's position and index
+    /// </summary>
     private void SpawnPlatform()
     {
         // instantiate a random platform and store into spawnedPlat
@@ -71,11 +88,10 @@ public class PlatformManager : MonoBehaviour
 
         // insert the spawned platform into its correct index
         _platforms.Insert(spawnedPlat.Index, spawnedPlat);
-
         
 
         // platform Y position and add offset
-        float posY = _currentPlatform * _maxCoordY;
+        float posY = (1 + _currentPlatform) * _maxCoordY;
         posY += UnityEngine.Random.Range(-_maxCoordOffset, _maxCoordOffset);
 
         // set the X position based on which side the platform is on and add offset
@@ -90,7 +106,23 @@ public class PlatformManager : MonoBehaviour
         ++_currentPlatform;
 
     }
+    /// <summary>
+    /// destroys every platform and resets the list and other variables
+    /// </summary>
 
+    private void DestroyAllPlatforms(){
+        foreach(Platform platform in _platforms) { 
+            Destroy(platform.gameObject);
+        }
+        _platformTotal = 0;
+        _currentPlatform = 0;
+        _platforms.Clear();
+    }
+
+    /// <summary>
+    /// randomizes a platform from the list of prefabs and returns it
+    /// </summary>
+    /// <returns> a random platform from the list of prefabs</returns>
     private Platform GetRandomPlatform()
     {
         int random = UnityEngine.Random.Range(0, _platformPrefabs.Count);

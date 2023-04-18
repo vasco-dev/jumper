@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Jump")]
+
     // scale of the force of gravity pushing the player, do not change the player's mass, it needs to be always = 1
     [SerializeField]
     private float _gravityScale = -30f;
@@ -26,16 +28,23 @@ public class PlayerController : MonoBehaviour
     // current force for the current jump
     private float _currentJumpForce = 0f;
 
+    // last platform the player landed on
+    public int CheckpointPlatformIndex { get; private set; } = 0;
+
+
+
 
     // is the player touching and holding the screen
     private bool _isHolding = false;
     // is the player holding the right side
     private bool _holdingRight = false;
-
+    //check if the player is touching the ground or not
     private bool _isGrounded = false;
 
     // screen size of the screen, IN PIXELS
     private float _screenSize = 1080f;
+
+
 
     // Player input actions
     private PlayerIA _playerInputs;
@@ -43,6 +52,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _pressedAction;
 
 
+    [Header("References")]
 
     // constant force component, funcitons as the Player gravity
     [SerializeField]
@@ -294,5 +304,12 @@ public class PlayerController : MonoBehaviour
             }
             yield return new WaitForFixedUpdate();
         }
+    }
+    /// <summary>
+    /// Sets the index of the platform that is now the checkpoint
+    /// </summary>
+    /// <param name="checkpointIndex"></param>
+    public void SetCheckpoint(int checkpointIndex){
+        CheckpointPlatformIndex = checkpointIndex;
     }
 }
