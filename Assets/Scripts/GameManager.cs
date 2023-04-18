@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
         UpdateHiScore();
         FindObjectOfType<BackgroundLerping>().ResetBackground();
         gameIsRunning = true;
+        AudioManager.Instance.Play("Start");
     }
 
     public void ShowTutorial()
@@ -135,6 +136,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        AudioManager.Instance.Play("Gameover");
         FinalScoreAnimator.SetBool("ExitAnim", false);
         gameIsRunning = false;
         animateScore = true;
