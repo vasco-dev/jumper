@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     private int tempScore;
     private bool animateScore;
 
+    private Vector3 respawnPoint;
+    private Vector3 unstuck = new Vector3(0,0.75f, 0);
+
     void Awake()
     {
         if (Instance == null)
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ResetScore();
     }
 
     // Update is called once per frame
@@ -107,6 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        respawnPoint = new Vector3(0, 0, 0);
         FinalScoreAnimator.SetBool("ExitAnim", true);
         animateScore = false;
         MainMenu.SetActive(false);
@@ -152,6 +156,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int increment)
     {
+        AudioManager.Instance.Play("Score");
         playerScore += increment;
         score.Remove(7, score.Length - 7);
         score.Append(playerScore);
@@ -169,5 +174,10 @@ public class GameManager : MonoBehaviour
     private void UpdateHiScore()
     {
         HiScoreText.text = "HiScore\n" + PlayerPrefs.GetInt("HighScore").ToString();
+    }
+
+    public void SetRespawnPosition(Vector3 position)
+    {
+        respawnPoint = position + unstuck;
     }
 }
