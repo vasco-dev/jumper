@@ -28,7 +28,7 @@ public class Platform : MonoBehaviour
 
             //TO-DO: ADD SCORE
 
-            checkPlayer.SetCheckpoint(Index);
+            PlatformManager.Instance.SetCheckpoint(this);
             OnPlayerLanded();
         }
     }

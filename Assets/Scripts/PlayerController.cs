@@ -28,10 +28,6 @@ public class PlayerController : MonoBehaviour
     // current force for the current jump
     private float _currentJumpForce = 0f;
 
-    // last platform the player landed on
-    public int CheckpointPlatformIndex { get; private set; } = 0;
-
-
 
 
     // is the player touching and holding the screen
@@ -306,10 +302,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     /// <summary>
-    /// Sets the index of the platform that is now the checkpoint
+    /// Respawn the player
     /// </summary>
     /// <param name="checkpointIndex"></param>
-    public void SetCheckpoint(int checkpointIndex){
-        CheckpointPlatformIndex = checkpointIndex;
+
+    public void Respawn()
+    {
+        transform.position = PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up;
     }
 }

@@ -22,6 +22,8 @@ public class PlatformManager : MonoBehaviour
     private float _rightCoordX = 2f;
     [SerializeField]
     private float _maxCoordOffset = 0.5f;
+    [SerializeField]
+    private float _deathWallOffset = 4f;
 
 
     [Header("References")]
@@ -37,6 +39,9 @@ public class PlatformManager : MonoBehaviour
 
     private int _currentPlatform = 0;
 
+
+    // last platform the player landed on
+    public Platform CurrentCheckpoint { get; private set; } = null;
 
     public static PlatformManager Instance { get; private set; }
 
@@ -135,6 +140,12 @@ public class PlatformManager : MonoBehaviour
         }
 
         return plat;
+    }
+
+    public void SetCheckpoint(Platform newCheckpoint)
+    {
+        CurrentCheckpoint = newCheckpoint;
+        DeathWall.Instance.transform.position = _deathWallOffset * Vector3.down + newCheckpoint.transform.position;
     }
 
 }
