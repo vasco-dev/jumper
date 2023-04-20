@@ -28,8 +28,12 @@ public class PlatformContact : MonoBehaviour
         }
         if (isRespawnPoint)
         {
+            Debug.Log("Inside the spot");
             GameManager.Instance.SetRespawnPosition(gameObject.transform.position);
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //gameObject.GetComponentInChildren<Transform>().gameObject.SetActive(true);
         }
+        if (!isRespawnPoint) gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)
