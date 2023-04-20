@@ -3202,6 +3202,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3940422298286142255, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: _playerOffset
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
@@ -3231,7 +3235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7425204749920426680, guid: e352dd6b38abc5a48b70e061ef2ddcbc, type: 3}
       propertyPath: _platformPrefabs.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7425204749920426680, guid: e352dd6b38abc5a48b70e061ef2ddcbc, type: 3}
       propertyPath: _platformPrefabs.Array.data[0]
@@ -3249,6 +3253,10 @@ PrefabInstance:
       propertyPath: _platformPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 5952280460715660855, guid: c09a3099af664cf4db447423b2f0328b, type: 3}
+    - target: {fileID: 7425204749920426680, guid: e352dd6b38abc5a48b70e061ef2ddcbc, type: 3}
+      propertyPath: _platformPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 6292654962890848194, guid: 4fd98b17badab7c4c905938cff610350, type: 3}
     - target: {fileID: 7425204749920426681, guid: e352dd6b38abc5a48b70e061ef2ddcbc, type: 3}
       propertyPath: m_Name
       value: PlatformManager
