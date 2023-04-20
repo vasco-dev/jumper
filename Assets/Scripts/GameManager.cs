@@ -123,8 +123,8 @@ public class GameManager : MonoBehaviour
         gameIsRunning = true;
         AudioManager.Instance.Play("Start");
 
-        PlayerController.Instance.StartNew();
         PlatformManager.Instance.StartNew();
+        PlayerController.Instance.StartNew();
     }
 
     public void ShowTutorial()

@@ -308,11 +308,18 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
+        Body.velocity = Vector3.zero;
         transform.position = PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up;
     }
 
     public void StartNew()
-    {
+    {        
+        _isGrounded= false;
+        _isHolding = false;
+
+        Body.interpolation = RigidbodyInterpolation.None;
         transform.position = Vector3.up;
+        Body.interpolation = RigidbodyInterpolation.Interpolate;
+
     }
 }
