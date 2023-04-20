@@ -319,6 +319,11 @@ public class PlayerController : MonoBehaviour
 
         Body.interpolation = RigidbodyInterpolation.None;
         transform.position = Vector3.up;
+        transform.position = Vector3.up;
+        transform.position = Vector3.up;
+        transform.position = Vector3.up;
+        transform.position = Vector3.up;
+        transform.position = Vector3.up;
         Body.interpolation = RigidbodyInterpolation.Interpolate;
 
     }
