@@ -36,6 +36,5 @@ public class BackgroundLerping : MonoBehaviour
         reset = 0f;
         previousPos = 0f;
         material.SetFloat("_Lerping", 0f);
-        Player.transform.position = new Vector3(0, 0, 0);
     }
 }

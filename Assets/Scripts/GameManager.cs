@@ -122,6 +122,9 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<BackgroundLerping>().ResetBackground();
         gameIsRunning = true;
         AudioManager.Instance.Play("Start");
+
+        PlayerController.Instance.StartNew();
+        PlatformManager.Instance.StartNew();
     }
 
     public void ShowTutorial()

@@ -35,6 +35,9 @@ public class PlatformManager : MonoBehaviour
 
     private List<Platform> _platforms = new List<Platform>();
 
+    [SerializeField]
+    private int _maxBurstPlatformTotal = 100;
+
     private int _platformTotal = 0;
 
     private int _currentPlatform = 0;
@@ -47,10 +50,10 @@ public class PlatformManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null){
+        if (Instance == null) {
             Instance = this;
         }
-        else{
+        else {
             Destroy(gameObject);
             Debug.LogError("not instance");
         }
@@ -60,12 +63,12 @@ public class PlatformManager : MonoBehaviour
     {
 
         // debug
-        if (SpawnPlatNow){
+        if (SpawnPlatNow) {
             SpawnPlatNow = false;
             SpawnPlatform();
         }
 
-        if (DestroyAllPlatsNow){
+        if (DestroyAllPlatsNow) {
             DestroyAllPlatsNow = false;
             DestroyAllPlatforms();
         }
@@ -80,27 +83,27 @@ public class PlatformManager : MonoBehaviour
     private void SpawnPlatform()
     {
         // instantiate a random platform and store into spawnedPlat
-        Platform spawnedPlat = Instantiate(GetRandomPlatform());        
+        Platform spawnedPlat = Instantiate(GetRandomPlatform());
 
         // set the platform's index
         spawnedPlat.SetIndex(_platformTotal);
 
         // set if the platform should be left or right
         // if it is even number it is on the right
-        if(_platformTotal % 2 == 0){
+        if (_platformTotal % 2 == 0) {
             spawnedPlat.SetIsRight(true);
         }
 
         // insert the spawned platform into its correct index
         _platforms.Insert(spawnedPlat.Index, spawnedPlat);
-        
+
 
         // platform Y position and add offset
         float posY = (1 + _currentPlatform) * _maxCoordY;
         posY += UnityEngine.Random.Range(-_maxCoordOffset, _maxCoordOffset);
 
         // set the X position based on which side the platform is on and add offset
-        float posX = spawnedPlat.IsRight? _rightCoordX: _leftCoordX;
+        float posX = spawnedPlat.IsRight ? _rightCoordX : _leftCoordX;
         posX += UnityEngine.Random.Range(-_maxCoordOffset, _maxCoordOffset);
 
         //set the transform position of the spawned platform
@@ -115,14 +118,21 @@ public class PlatformManager : MonoBehaviour
     /// destroys every platform and resets the list and other variables
     /// </summary>
 
-    private void DestroyAllPlatforms(){
-        foreach(Platform platform in _platforms) { 
+    private void DestroyAllPlatforms() {
+        foreach (Platform platform in _platforms) {
             Destroy(platform.gameObject);
         }
         _platformTotal = 0;
         _currentPlatform = 0;
         _platforms.Clear();
     }
+    private void BurstSpawnPlatforms()
+    {
+        do{
+            SpawnPlatform();
+        } while (_platformTotal < _maxBurstPlatformTotal);
+    }
+
 
     /// <summary>
     /// randomizes a platform from the list of prefabs and returns it
@@ -134,7 +144,7 @@ public class PlatformManager : MonoBehaviour
 
         _platformPrefabs[random].TryGetComponent<Platform>(out Platform plat);
 
-        if(plat == null) {
+        if (plat == null) {
             Debug.LogError("PREFAB IS NOT PLATFORM");
             return null;
         }
@@ -145,7 +155,13 @@ public class PlatformManager : MonoBehaviour
     public void SetCheckpoint(Platform newCheckpoint)
     {
         CurrentCheckpoint = newCheckpoint;
-        DeathWall.Instance.transform.position = _deathWallOffset * Vector3.down + newCheckpoint.transform.position;
+        //DeathWall.Instance.transform.position = _deathWallOffset * Vector3.down + newCheckpoint.transform.position;
     }
 
+    public void StartNew()
+    {
+        DestroyAllPlatforms();
+        BurstSpawnPlatforms();
+        CurrentCheckpoint = null;
+    }
 }

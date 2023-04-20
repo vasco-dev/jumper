@@ -310,4 +310,9 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up;
     }
+
+    public void StartNew()
+    {
+        transform.position = Vector3.up;
+    }
 }
