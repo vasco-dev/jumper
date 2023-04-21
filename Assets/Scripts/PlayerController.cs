@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
 
     // Player input actions
-    private PlayerIA _playerInputs;
+    public PlayerIA PlayerInputs { get; private set; } = null;
     private InputAction _positionAction;
     private InputAction _pressedAction;
 
@@ -126,10 +126,10 @@ public class PlayerController : MonoBehaviour
         _screenSize = Screen.width;
 
         // create and enable the player input
-        _playerInputs = new PlayerIA();
-        _playerInputs.Enable();
-        _pressedAction = _playerInputs.Player.Pressed;
-        _positionAction = _playerInputs.Player.Position;
+        PlayerInputs = new PlayerIA();
+        PlayerInputs.Enable();
+        _pressedAction = PlayerInputs.Player.Pressed;
+        _positionAction = PlayerInputs.Player.Position;
         // set events for touching and releasing the screen
         _pressedAction.started += InputOnTap;
         _pressedAction.canceled += InputOnRelease;

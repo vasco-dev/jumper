@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    private bool hasBeenTouched;
     // the specific index of this platfrom for the platform manager
     public int Index { get; private set; } = 0;
     // is this platform in the right side of the screen
@@ -19,18 +20,22 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        // check if the collision is the player
-        collision.TryGetComponent<PlayerController>(out PlayerController checkPlayer);
-
-        if(checkPlayer != null)
+        if (!hasBeenTouched)
         {
+            // check if the collision is the player
+            collision.TryGetComponent<PlayerController>(out PlayerController checkPlayer);
 
-
-            //TO-DO: ADD SCORE
-
-            PlatformManager.Instance.SetCheckpoint(this);
-            OnPlayerLanded();
+            if (checkPlayer != null)
+            {
+                hasBeenTouched = true;
+                GameManager.Instance.AddScore(10);
+                AudioManager.Instance.Play("Score");
+                PlatformManager.Instance.SetCheckpoint(this);
+                OnPlayerLanded();
+            }
         }
+        //if goes wrong put inside playercheck
+        AudioManager.Instance.Play("LandingImpact");
     }
 
     // behaviour to run for platforms that have specific behaviours

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GameOverUI;
 
     [SerializeField] private TextMeshProUGUI TimerText;
-    private float maxTime = 60;
+    private float maxTime = 10;
     private float currentTime;
     private StringBuilder timer = new StringBuilder();
 
@@ -64,11 +64,16 @@ public class GameManager : MonoBehaviour
     {
         if (gameIsRunning)
         {
+            PlayerController.Instance.PlayerInputs.Enable();
             Timer();
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 AddScore(10);
             }
+        }
+        else
+        {
+            PlayerController.Instance.PlayerInputs.Disable();
         }
 
         if (animateScore)
@@ -182,5 +187,15 @@ public class GameManager : MonoBehaviour
     public void SetRespawnPosition(Vector3 position)
     {
         respawnPoint = position + unstuck;
+    }
+
+    public bool IsGameRunning()
+    {
+        return gameIsRunning;
+    }
+
+    public void SetGameIsRunning(bool isRunning)
+    {
+        gameIsRunning = isRunning;
     }
 }
