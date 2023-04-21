@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Jump")]
 
+    [SerializeField] private ParticleSystem dust;
+
     // scale of the force of gravity pushing the player, do not change the player's mass, it needs to be always = 1
     [SerializeField]
     private float _gravityScale = -30f;
@@ -233,6 +235,8 @@ public class PlayerController : MonoBehaviour
 
             // player is not grounded anymore
             _isGrounded = false;
+            dust.Play();
+            dust.simulationSpace = ParticleSystemSimulationSpace.World;
         }
         //else
         //{

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GameOverUI;
 
     [SerializeField] private TextMeshProUGUI TimerText;
-    private float maxTime = 10;
+    private float maxTime = 60;
     private float currentTime;
     private StringBuilder timer = new StringBuilder();
 
