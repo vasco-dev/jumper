@@ -12,6 +12,8 @@ public class Platform_Ghost : Platform
     private Collider _collider;
     [SerializeField]
     private GameObject _ghost;
+    [SerializeField]
+    private MeshRenderer _renderer;
 
     private bool _isGhost = false;
 
@@ -36,6 +38,7 @@ public class Platform_Ghost : Platform
         _playerLanded = true;
         _isGhost = true;
         _collider.enabled = _isGhost;
+        _renderer.enabled = _isGhost;
         _ghost.SetActive(_isGhost);
     }
 

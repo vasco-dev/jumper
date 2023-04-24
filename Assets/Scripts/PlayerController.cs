@@ -321,14 +321,19 @@ public class PlayerController : MonoBehaviour
         _isGrounded= false;
         _isHolding = false;
 
+        Body.isKinematic = true;
         Body.interpolation = RigidbodyInterpolation.None;
+
         transform.position = Vector3.up;
         transform.position = Vector3.up;
         transform.position = Vector3.up;
         transform.position = Vector3.up;
         transform.position = Vector3.up;
         transform.position = Vector3.up;
+
         Body.interpolation = RigidbodyInterpolation.Interpolate;
+        Body.isKinematic = false;
+
 
     }
 }

@@ -8,6 +8,13 @@ public class Platform_RoofWall : Platform
     [SerializeField]
     private GameObject _roofOrWall;
 
+    private void Awake()
+    {
+        if(IsRight)
+        {
+            transform.localScale = new(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+    }
     protected override void OnPlayerLanded()
     {
         if (_roofOrWall != null)
