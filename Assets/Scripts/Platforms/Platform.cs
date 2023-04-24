@@ -6,6 +6,8 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private bool hasBeenTouched;
+    //[SerializeField] private ParticleSystem ScoreLeft;
+    //[SerializeField] private ParticleSystem ScoreRight;
     // the specific index of this platfrom for the platform manager
     public int Index { get; private set; } = 0;
     // is this platform in the right side of the screen
@@ -30,6 +32,11 @@ public class Platform : MonoBehaviour
                 hasBeenTouched = true;
                 GameManager.Instance.AddScore(10);
                 AudioManager.Instance.Play("Score");
+                //ScoreLeft.Play();
+                //ScoreLeft.simulationSpace = ParticleSystemSimulationSpace.World;
+                //ScoreRight.Play();
+                //ScoreRight.simulationSpace = ParticleSystemSimulationSpace.World;
+                GameManager.Instance.ScoreParticles();
                 PlatformManager.Instance.SetCheckpoint(this);
                 OnPlayerLanded();
             }

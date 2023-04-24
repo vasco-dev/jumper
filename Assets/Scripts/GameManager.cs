@@ -198,4 +198,14 @@ public class GameManager : MonoBehaviour
     {
         gameIsRunning = isRunning;
     }
+
+    [SerializeField] private ParticleSystem ScoreLeft;
+    [SerializeField] private ParticleSystem ScoreRight;
+    public void ScoreParticles()
+    {
+        ScoreLeft.Play();
+        ScoreLeft.simulationSpace = ParticleSystemSimulationSpace.World;
+        ScoreRight.Play();
+        ScoreRight.simulationSpace = ParticleSystemSimulationSpace.World;
+    }
 }
