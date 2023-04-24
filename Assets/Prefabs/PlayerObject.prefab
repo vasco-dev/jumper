@@ -202,7 +202,7 @@ Transform:
   - {fileID: 3940422297828760888}
   - {fileID: 3940422296775983084}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3940422296775983087
 GameObject:
@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c97288b421f2644d86df26e5e25a042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dust: {fileID: 3570217716794673361, guid: 5933f4782b20d5c429ef6df3f6043234, type: 3}
   _gravityScale: -40
   _jumpAngle: 80
   _jumpForceIncrement: 50
