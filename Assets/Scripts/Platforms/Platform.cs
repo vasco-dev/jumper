@@ -30,7 +30,7 @@ public class Platform : MonoBehaviour
             if (checkPlayer != null)
             {
                 hasBeenTouched = true;
-                GameManager.Instance.AddScore(10);
+                GameManager.Instance.AddScore(10, true);
                 AudioManager.Instance.Play("Score");
                 //ScoreLeft.Play();
                 //ScoreLeft.simulationSpace = ParticleSystemSimulationSpace.World;

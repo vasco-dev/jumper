@@ -46,7 +46,7 @@ public class PlatformContact : MonoBehaviour
             if (!touchedPlatform)
             {
                 touchedPlatform = true;
-                GameManager.Instance.AddScore(10);
+                GameManager.Instance.AddScore(10, true);
             }
             AudioManager.Instance.Play("LandingImpact");
         }

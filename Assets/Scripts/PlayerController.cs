@@ -73,6 +73,18 @@ public class PlayerController : MonoBehaviour
     // singleton instance
     public static PlayerController Instance { get; private set; }
 
+    private int lastPosY;
+
+    void Update()
+    {
+        int posY = Mathf.FloorToInt(transform.position.y);
+        if(posY > lastPosY)
+        {
+            lastPosY = posY;
+            GameManager.Instance.AddScore(1, false);
+        }
+    }
+
 
     //remove
     //private float TEMP_START_TIME = 0;
@@ -320,6 +332,8 @@ public class PlayerController : MonoBehaviour
     {        
         _isGrounded= false;
         _isHolding = false;
+
+        lastPosY = 0;
 
         Body.isKinematic = true;
         Body.interpolation = RigidbodyInterpolation.None;

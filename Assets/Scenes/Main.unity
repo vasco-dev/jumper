@@ -3426,6 +3426,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 4511991256144016388, guid: 45d248b26a06ebd4c821bc8b8074ac99, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8117435300515490240, guid: 45d248b26a06ebd4c821bc8b8074ac99, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3528,6 +3532,10 @@ PrefabInstance:
     - target: {fileID: 7766282124070377875, guid: 66b8d8e9939e82d4684ca64ffb3bc092, type: 3}
       propertyPath: m_Name
       value: ScoreRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766282124070377876, guid: 66b8d8e9939e82d4684ca64ffb3bc092, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

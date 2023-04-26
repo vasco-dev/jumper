@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
             Timer();
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                AddScore(10);
+                AddScore(10, false);
             }
         }
         else
@@ -162,14 +162,15 @@ public class GameManager : MonoBehaviour
         HiScoreGameOver.text = PlayerPrefs.GetInt("HighScore").ToString();
     }
 
-    public void AddScore(int increment)
+    public void AddScore(int increment, bool isPlatform)
     {
-        AudioManager.Instance.Play("Score");
+        if(isPlatform) AudioManager.Instance.Play("Score");
         playerScore += increment;
         score.Remove(7, score.Length - 7);
         score.Append(playerScore);
         ScoreText.text = score.ToString();
     }
+
 
     private void ResetScore()
     {
@@ -204,8 +205,8 @@ public class GameManager : MonoBehaviour
     public void ScoreParticles()
     {
         ScoreLeft.Play();
-        ScoreLeft.simulationSpace = ParticleSystemSimulationSpace.World;
+        ScoreLeft.simulationSpace = ParticleSystemSimulationSpace.Local;
         ScoreRight.Play();
-        ScoreRight.simulationSpace = ParticleSystemSimulationSpace.World;
+        ScoreRight.simulationSpace = ParticleSystemSimulationSpace.Local;
     }
 }
