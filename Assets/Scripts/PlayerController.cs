@@ -325,7 +325,11 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         Body.velocity = Vector3.zero;
-        transform.position = PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up;
+
+        if (PlatformManager.Instance.CurrentCheckpoint != null)
+        {
+            transform.position = PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up;
+        }
     }
 
     public void StartNew()

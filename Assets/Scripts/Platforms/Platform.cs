@@ -9,14 +9,14 @@ public class Platform : MonoBehaviour
     //[SerializeField] private ParticleSystem ScoreLeft;
     //[SerializeField] private ParticleSystem ScoreRight;
     // the specific index of this platfrom for the platform manager
-    public int Index { get; private set; } = 0;
+    public int Index { get; protected set; } = 0;
     // is this platform in the right side of the screen
-    public bool IsRight { get; private set; } = false;
+    public bool IsRight { get; protected set; } = false;
 
     public void SetIndex(int indexToSet){
         Index = indexToSet;
     }
-    public void SetIsRight(bool isRightToSet){
+    public virtual void SetIsRight(bool isRightToSet){
         IsRight = isRightToSet;
     }
 
