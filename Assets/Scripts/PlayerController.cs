@@ -325,30 +325,24 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         Body.velocity = Vector3.zero;
+        _animator.Play("Respawn");
+        AudioManager.Instance.Play("Respawn");
 
         if (PlatformManager.Instance.CurrentCheckpoint != null)
         {
-            transform.position = PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up;
+            Body.isKinematic = false;
+            Body.MovePosition(PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up);
         }
         else
         {
+            _animator.Play("Respawn");
             _isGrounded = false;
             _isHolding = false;
+            Body.isKinematic = false;
 
             lastPosY = 0;
 
-            Body.isKinematic = true;
-            Body.interpolation = RigidbodyInterpolation.None;
-
-            transform.position = Vector3.up;
-            transform.position = Vector3.up;
-            transform.position = Vector3.up;
-            transform.position = Vector3.up;
-            transform.position = Vector3.up;
-            transform.position = Vector3.up;
-
-            Body.interpolation = RigidbodyInterpolation.Interpolate;
-            Body.isKinematic = false;
+            Body.MovePosition(new Vector3(0, 1, 0));
         }
     }
 
@@ -356,22 +350,19 @@ public class PlayerController : MonoBehaviour
     {        
         _isGrounded= false;
         _isHolding = false;
+        Body.isKinematic = false;
 
         lastPosY = 0;
 
+        Body.MovePosition(new Vector3(0, 1, 0));
+    }
+
+    public IEnumerator RespawnCoroutine()
+    {
+        AudioManager.Instance.Play("Drop");
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
         Body.isKinematic = true;
-        Body.interpolation = RigidbodyInterpolation.None;
-
-        transform.position = Vector3.up;
-        transform.position = Vector3.up;
-        transform.position = Vector3.up;
-        transform.position = Vector3.up;
-        transform.position = Vector3.up;
-        transform.position = Vector3.up;
-
-        Body.interpolation = RigidbodyInterpolation.Interpolate;
-        Body.isKinematic = false;
-
-
+        yield return new WaitForSeconds(3);
+        Respawn();
     }
 }

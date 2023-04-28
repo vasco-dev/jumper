@@ -24,7 +24,7 @@ public class DeathWall : MonoBehaviour
 
         if (checkPlayer != null)
         {
-            checkPlayer.Respawn();
+            StartCoroutine(checkPlayer.RespawnCoroutine());
         }
     }
 }
