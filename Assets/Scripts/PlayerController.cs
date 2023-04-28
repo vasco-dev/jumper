@@ -330,6 +330,26 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = PlatformManager.Instance.CurrentCheckpoint.transform.position + Vector3.up;
         }
+        else
+        {
+            _isGrounded = false;
+            _isHolding = false;
+
+            lastPosY = 0;
+
+            Body.isKinematic = true;
+            Body.interpolation = RigidbodyInterpolation.None;
+
+            transform.position = Vector3.up;
+            transform.position = Vector3.up;
+            transform.position = Vector3.up;
+            transform.position = Vector3.up;
+            transform.position = Vector3.up;
+            transform.position = Vector3.up;
+
+            Body.interpolation = RigidbodyInterpolation.Interpolate;
+            Body.isKinematic = false;
+        }
     }
 
     public void StartNew()
