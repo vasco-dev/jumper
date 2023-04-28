@@ -75,6 +75,9 @@ public class PlayerController : MonoBehaviour
 
     private int lastPosY;
 
+    [SerializeField] private Material HideMaterial;
+    [SerializeField] private Material DefaultMaterial;
+
     void Update()
     {
         int posY = Mathf.FloorToInt(transform.position.y);
@@ -324,9 +327,10 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
-        Body.velocity = Vector3.zero;
+        //Body.velocity = Vector3.zero;
         _animator.Play("Respawn");
         AudioManager.Instance.Play("Respawn");
+        gameObject.GetComponent<MeshRenderer>().sharedMaterial = DefaultMaterial;
 
         if (PlatformManager.Instance.CurrentCheckpoint != null)
         {
@@ -351,6 +355,7 @@ public class PlayerController : MonoBehaviour
         _isGrounded= false;
         _isHolding = false;
         Body.isKinematic = false;
+        gameObject.GetComponent<MeshRenderer>().sharedMaterial = DefaultMaterial;
 
         lastPosY = 0;
 
@@ -360,7 +365,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator RespawnCoroutine()
     {
         AudioManager.Instance.Play("Drop");
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().sharedMaterial = HideMaterial;
         Body.isKinematic = true;
         yield return new WaitForSeconds(3);
         Respawn();

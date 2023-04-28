@@ -2488,6 +2488,14 @@ PrefabInstance:
       propertyPath: dust
       value: 
       objectReference: {fileID: 698560302}
+    - target: {fileID: 3940422297828760889, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: HideMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: f66a7dfca3db9e54fa553a14c885c39e, type: 2}
+    - target: {fileID: 3940422297828760889, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: DefaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: dec58535db9300d4eb07f4d6e1209aac, type: 2}
     - target: {fileID: 3940422297828760893, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
       propertyPath: m_Enabled
       value: 1
