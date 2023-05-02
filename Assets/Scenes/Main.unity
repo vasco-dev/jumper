@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1916,125 +1916,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3940422297828760888, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
   m_PrefabInstance: {fileID: 1682249559}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1169380382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1169380384}
-  - component: {fileID: 1169380383}
-  - component: {fileID: 1169380385}
-  - component: {fileID: 1169380386}
-  m_Layer: 0
-  m_Name: Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1169380383
+--- !u!114 &1169380385 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6538116041889638229, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+  m_PrefabInstance: {fileID: 6538116040875717492}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169380382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f989f72c40d609e4db4cf24a8239d13d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainMenu: {fileID: 1541097178}
-  TutorialUI: {fileID: 958072543}
-  GameUI: {fileID: 1040641971}
-  GameOverUI: {fileID: 1710163283}
-  TimerText: {fileID: 435756445}
-  ScoreText: {fileID: 77682284}
-  HiScoreText: {fileID: 604478609}
-  ScoreGameOver: {fileID: 1713539416}
-  HiScoreGameOver: {fileID: 440998721}
-  FinalScoreAnimator: {fileID: 1710163285}
-  ScoreLeft: {fileID: 600683334}
-  ScoreRight: {fileID: 1781035205}
---- !u!4 &1169380384
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169380382}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1169380385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169380382}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c1729ded5400bf43a65cb32a6b56903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1169380386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169380382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de190108afeb2a24ba89fdb238ddae1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Start
-    clip: {fileID: 8300000, guid: 2b653a5234c81bd41b3dc462a78d8202, type: 3}
-    volume: 0.25
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: LandingImpact
-    clip: {fileID: 8300000, guid: 43b1c585e64917746942fec574be7ddc, type: 3}
-    volume: 0.2
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Score
-    clip: {fileID: 8300000, guid: fcaded62d53241c4a8fe7b6965908236, type: 3}
-    volume: 0.25
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Drop
-    clip: {fileID: 8300000, guid: 0d218d46ac84b5943b76be1f3d599ef5, type: 3}
-    volume: 0.2
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Respawn
-    clip: {fileID: 8300000, guid: 21bd057f662658b4f84efecba41970e4, type: 3}
-    volume: 0.25
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Gameover
-    clip: {fileID: 8300000, guid: 93ae9f6bc19bf4c448f6861ff416296d, type: 3}
-    volume: 0.25
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
 --- !u!1 &1241410665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,6 +3439,113 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 45d248b26a06ebd4c821bc8b8074ac99, type: 3}
+--- !u!1001 &6538116040875717492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638228, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638250, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: m_Name
+      value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: GameUI
+      value: 
+      objectReference: {fileID: 1040641971}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: MainMenu
+      value: 
+      objectReference: {fileID: 1541097178}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: ScoreLeft
+      value: 
+      objectReference: {fileID: 600683334}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: ScoreText
+      value: 
+      objectReference: {fileID: 77682284}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: TimerText
+      value: 
+      objectReference: {fileID: 435756445}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: GameOverUI
+      value: 
+      objectReference: {fileID: 1710163283}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: ScoreRight
+      value: 
+      objectReference: {fileID: 1781035205}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: TutorialUI
+      value: 
+      objectReference: {fileID: 958072543}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: HiScoreText
+      value: 
+      objectReference: {fileID: 604478609}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: ScoreGameOver
+      value: 
+      objectReference: {fileID: 1713539416}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: HiScoreGameOver
+      value: 
+      objectReference: {fileID: 440998721}
+    - target: {fileID: 6538116041889638251, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
+      propertyPath: FinalScoreAnimator
+      value: 
+      objectReference: {fileID: 1710163285}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d662b11e49a9e049b425a15b6a1ae66, type: 3}
 --- !u!1001 &7766282124436842833
 PrefabInstance:
   m_ObjectHideFlags: 0

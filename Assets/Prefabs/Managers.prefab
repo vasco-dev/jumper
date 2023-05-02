@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6538116041889638250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6538116041889638228}
+  - component: {fileID: 6538116041889638251}
+  - component: {fileID: 6538116041889638229}
+  - component: {fileID: 6538116041889638230}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6538116041889638228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538116041889638250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6538116041889638251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538116041889638250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f989f72c40d609e4db4cf24a8239d13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu: {fileID: 0}
+  TutorialUI: {fileID: 0}
+  GameUI: {fileID: 0}
+  GameOverUI: {fileID: 0}
+  TimerText: {fileID: 0}
+  ScoreText: {fileID: 0}
+  HiScoreText: {fileID: 0}
+  ScoreGameOver: {fileID: 0}
+  HiScoreGameOver: {fileID: 0}
+  FinalScoreAnimator: {fileID: 0}
+  ScoreLeft: {fileID: 0}
+  ScoreRight: {fileID: 0}
+--- !u!114 &6538116041889638229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538116041889638250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1729ded5400bf43a65cb32a6b56903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6538116041889638230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538116041889638250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de190108afeb2a24ba89fdb238ddae1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volumeScale: 0.1
+  sounds:
+  - name: Start
+    clip: {fileID: 8300000, guid: 2b653a5234c81bd41b3dc462a78d8202, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LandingImpact
+    clip: {fileID: 8300000, guid: 43b1c585e64917746942fec574be7ddc, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Score
+    clip: {fileID: 8300000, guid: fcaded62d53241c4a8fe7b6965908236, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Drop
+    clip: {fileID: 8300000, guid: 0d218d46ac84b5943b76be1f3d599ef5, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Respawn
+    clip: {fileID: 8300000, guid: 21bd057f662658b4f84efecba41970e4, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gameover
+    clip: {fileID: 8300000, guid: 93ae9f6bc19bf4c448f6861ff416296d, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

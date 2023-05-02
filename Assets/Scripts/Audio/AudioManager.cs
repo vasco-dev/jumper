@@ -6,6 +6,9 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField]
+    private float _volumeScale = 0.5f;
+
     public Sound[] sounds;
 
     public static AudioManager Instance { get; private set; }
@@ -28,7 +31,7 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
 
-            s.source.volume = s.volume;
+            s.source.volume = s.volume * _volumeScale;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop; 
             

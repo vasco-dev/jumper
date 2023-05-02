@@ -367,7 +367,8 @@ public class PlayerController : MonoBehaviour
         AudioManager.Instance.Play("Drop");
         gameObject.GetComponent<MeshRenderer>().sharedMaterial = HideMaterial;
         Body.isKinematic = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.1f);
         Respawn();
+
     }
 }
