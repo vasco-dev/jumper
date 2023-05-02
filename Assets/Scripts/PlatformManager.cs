@@ -42,6 +42,8 @@ public class PlatformManager : MonoBehaviour
 
     private int _currentPlatform = 0;
 
+    [SerializeField] private GameObject VerticalBG;
+
 
     // last platform the player landed on
     public Platform CurrentCheckpoint { get; private set; } = null;
@@ -112,6 +114,10 @@ public class PlatformManager : MonoBehaviour
         // iterate the total number of platforms and the index of the current
         ++_platformTotal;
         ++_currentPlatform;
+        if (spawnedPlat.GetComponent<Platform_Vertical>())
+        {
+            Instantiate(VerticalBG, new Vector3(posX, posY-0.5f, 0), Quaternion.identity);
+        }
 
     }
     /// <summary>

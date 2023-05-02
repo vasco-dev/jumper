@@ -376,6 +376,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7425204749920426680, guid: e352dd6b38abc5a48b70e061ef2ddcbc, type: 3}
+      propertyPath: VerticalBG
+      value: 
+      objectReference: {fileID: 32901161927726981, guid: 0e9157b54540415428c137140be4c25f, type: 3}
     - target: {fileID: 7425204749920426681, guid: e352dd6b38abc5a48b70e061ef2ddcbc, type: 3}
       propertyPath: m_Name
       value: PlatformManager
@@ -2375,6 +2379,38 @@ PrefabInstance:
     - target: {fileID: 3940422296505692886, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Positions.Array.data[1].x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Positions.Array.data[2].x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Positions.Array.data[2].y
+      value: 4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Positions.Array.data[3].x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Positions.Array.data[3].y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.00390625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940422296775983085, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.41106415
       objectReference: {fileID: 0}
     - target: {fileID: 3940422297828760889, guid: ae5373b7e6f178f4fb9b0fb6f75afd63, type: 3}
       propertyPath: dust
